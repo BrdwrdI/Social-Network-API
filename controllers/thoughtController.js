@@ -9,7 +9,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    async getThoughtbId(req, res) {
+    async getThoughtbyId(req, res) {
         try {
             const thought = await Thought.findOne({ _id: res.params.thoughtId });
             if (!thought) {
