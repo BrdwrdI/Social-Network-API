@@ -55,5 +55,10 @@ module.exports = {
             console.log(err);
             res.status(500).json(err)
         }
+    },
+    async addFriend(req, res) {
+        try {
+            const user = await User.findOneAndUpdate
+        }
     }
 }
