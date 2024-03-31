@@ -74,13 +74,14 @@ module.exports = {
         }
     },
     async removeFriend(req, res) {
+        console.log("before remove Friend " + req.params.userId)
         try {
-            const user = User.findOneAndUpdate(
+            const user =  await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: { friendId: req.params.friendId } } },
-                { runValidatores: true, new: true }
-            )
-
+                { $pull: { friends: req.params.friendId } },
+                { runValidators: true, new: true }
+            );
+            console.log("After func " + req.params.friendId);
             if (!user) {
                 return res.status(404).json({ message: 'No user with that Id!' });
             }

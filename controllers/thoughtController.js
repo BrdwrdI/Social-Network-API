@@ -11,11 +11,11 @@ module.exports = {
     },
     async getThoughtbyId(req, res) {
         try {
-            const thought = await Thought.findOne({ _id: res.params.thoughtId });
+            const thought = await Thought.findOne({ _id: req.params.thoughtId });
             if (!thought) {
                 return res.status(404).json({ message: 'No Thought with that ID!'});
             }
-            res.jeson(thought);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -42,7 +42,7 @@ module.exports = {
     async updateThought(req, res) {
         try {
             const thought = await Thought.findOneAndUpdate(
-                { _id: req.params.videoId },
+                { _id: req.params.thoughtId },
                 { $set: req.body },
                 { runValidators: true, new: true }
             );
@@ -65,7 +65,7 @@ module.exports = {
             
             const user = await User.findOneAndUpdate(
                 { thoughts: req.params.thoughtId },
-                { $pull: { thoughts: req.params.videoId } },
+                { $pull: { thoughts: req.params.thoughtId } },
                 { new: true }
             );
 
@@ -82,14 +82,14 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $addToSet: {reactions: req.body } },
+                { $addToSet: { reactions: req.body } },
                 { runValidators: true, new: true }
             );
-
+                console.log("REACTION -> " )
             if (!thought) {
                 return res.status(404).json({ message: 'No thought with that id!' });
             }
-
+            
             res.json(thought);
         } catch (err) {
             res.status(500).json(err);
@@ -99,7 +99,7 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $pull: { reactions: { reactionId: req.params.responseId } } },
+                { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { runValidators: true, new: true }
             )
 
