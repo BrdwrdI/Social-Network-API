@@ -2,22 +2,13 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+I created this Project as a tool to further familiarize myself with creating a db without the use of SQL. It also further reinforced my ability to create routes and establishing a database using mongoose. This project was instrumental in advancing my knowledge base surounding mongoose.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Please refer to the below video for a walkthrough of the Social Network Api:
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+                    [Walkthrough](https://vimeo.com/929233490?share=copy)
 
 ## Credits
 
