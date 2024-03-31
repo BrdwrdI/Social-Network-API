@@ -12,7 +12,6 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            // getter method to format timestamp on query
             toJSON: {
                 getters: true,
             },
@@ -23,6 +22,12 @@ const thoughtSchema = new Schema(
         },
         reactions: [reactionSchema],
     },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    }
 );
 
 thoughtSchema.virtual('reactionCount').get(function (){
